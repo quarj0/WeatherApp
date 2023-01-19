@@ -81,7 +81,7 @@ def getWeather():
         h.config(text=humidity)
         d.config(text=description)
     except:
-        messagebox.showerror("Location Error!", "cannot find location\n check spelling")
+        messagebox.showerror("Location Error!", "cannot find location!")
 
 
 # search icon
