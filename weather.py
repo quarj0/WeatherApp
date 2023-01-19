@@ -1,4 +1,4 @@
-# importing modules
+# importing required libraries
 from tkinter import *
 from datetime import *
 from tkinter import messagebox
@@ -7,9 +7,12 @@ import requests
 from geopy.geocoders import *
 from timezonefinder import *
 
-root = Tk()
-root.title("Weather Now")
 
+# initializing tkinter
+root = Tk()
+root.title("Weather Update")
+
+# This gives the size of the application
 root.geometry("720x480+300+200")
 root.resizable(False, False)
 
@@ -69,6 +72,12 @@ search_icon = PhotoImage(file="search_icon.png")
 search_icon_image = Button(image=search_icon, background='#404040', width=0, cursor='hand2', command=getWeather)
 search_icon_image.place(x=310, y=30)
 
+# app icon
+# root.iconbitmap("weather icon.png")
+app_icon = PhotoImage(file="weather icon.png")
+root.iconphoto(False, app_icon)
+
+
 # Logo in app, will be changed to a gif later in the upcoming versions
 logo = PhotoImage(file='logo.png')
 logo_image = Label(image=logo)
@@ -113,3 +122,5 @@ c = Label(font=("Arial", 28, "bold"))
 c.place(x=500, y=150)
 
 root.mainloop()
+
+SystemExit
