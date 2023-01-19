@@ -4,7 +4,6 @@ Application name: Weather update
 app version: 1.2
 """
 
-
 # importing required libraries
 from tkinter import *
 from datetime import *
