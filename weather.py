@@ -81,13 +81,14 @@ def getWeather():
         h.config(text=humidity)
         d.config(text=description)
     except:
-        messagebox.showerror("Location Error!", "cannot find location!")
+        messagebox.showerror("Error!", "cannot find location!\ncheck network connection or spelling.")
 
 
 # search icon
 search_icon = PhotoImage(file="search_icon.png")
 search_icon_image = Button(
-    image=search_icon, background="#404040", width=0, cursor="hand2", command=getWeather
+    image=search_icon, background="#404040", width=0, 
+    cursor="hand2", command=getWeather, borderwidth=0, height=50
 )
 search_icon_image.place(x=310, y=30)
 
