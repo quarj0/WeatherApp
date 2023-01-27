@@ -17,6 +17,7 @@ from timezonefinder import *
 # initializing tkinter
 root = Tk()
 root.title("Weather Update")
+# root.config(bg="black")
 
 # This gives the size of the application
 root.geometry("720x480+300+200")
@@ -25,7 +26,7 @@ root.resizable(False, False)
 # search bar
 search_bar = PhotoImage(file="search.png")
 search_image = Label(image=search_bar)
-search_image.place(x=20, y=20)
+search_image.place(x=20, y=15.8)
 
 # text field
 textfield = Entry(
@@ -43,9 +44,40 @@ box_image = Label(image=box)
 box_image.place(x=38, y=375)
 
 
+# Adding light and dark mode images
+light = PhotoImage(file="light.png")
+dark = PhotoImage(file="dark.png")
+
+switch = True
+
+# toggling between light and dark mode
+def toggle():
+    global switch
+    if switch == True:
+        switch.config(image=dark, bg="#26242f", activebackground="#26242f")
+
+        # changing the background color to black
+        root.config(bg="#26242f")
+        switch = False
+
+    # changing the background color to white
+    else:
+        switch.config(image=light, bg="white", activebackground="white")
+        switch = True
+
+    # This is the switch button
+switch = Button(
+        root,
+        image=light,
+        bg="white",
+        activebackground="white",
+        bd=0,
+        cursor="hand2",
+        command=toggle)
+switch.place(x=500, y=50)
+
+
 # defining my weather
-
-
 def getWeather():
     try:
         city = textfield.get()
@@ -81,14 +113,21 @@ def getWeather():
         h.config(text=humidity)
         d.config(text=description)
     except:
-        messagebox.showerror("Error!", "cannot find location!\ncheck network connection or spelling.")
+        messagebox.showerror(
+            "Error!", "cannot find location!\ncheck network connection or spelling."
+        )
 
 
 # search icon
 search_icon = PhotoImage(file="search_icon.png")
 search_icon_image = Button(
-    image=search_icon, background="#404040", width=0, 
-    cursor="hand2", command=getWeather, borderwidth=0, height=50
+    image=search_icon,
+    background="#404040",
+    width=0,
+    cursor="hand2",
+    command=getWeather,
+    borderwidth=0,
+    height=50,
 )
 search_icon_image.place(x=310, y=30)
 
@@ -141,11 +180,11 @@ clock = Label(root, font=("arial", 20, "bold"))
 clock.place(x=50, y=140)
 
 # Placing temperature and condition
-t = Label(font=("Arial", 30, "bold"), fg="red")
-t.place(x=500, y=100)
+t = Label(font=("Poppins", 20, "bold"), fg="red")
+t.place(x=500, y=200)
 
-c = Label(font=("Arial", 28, "bold"))
-c.place(x=500, y=150)
+c = Label(font=("Poppins", 28, "bold"))
+c.place(x=500, y=220)
 
 root.mainloop()
 
