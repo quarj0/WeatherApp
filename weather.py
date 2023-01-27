@@ -47,35 +47,41 @@ box_image.place(x=38, y=375)
 # Adding light and dark mode images
 light = PhotoImage(file="light.png")
 dark = PhotoImage(file="dark.png")
+# Adding light and dark mode images
+light = PhotoImage(file="light.png")
+dark = PhotoImage(file="dark.png")
 
-switch = True
+switch_value = True
 
-# toggling between light and dark mode
+# Defining a function to toggle
+# between light and dark theme
 def toggle():
-    global switch
-    if switch == True:
-        switch.config(image=dark, bg="#26242f", activebackground="#26242f")
 
-        # changing the background color to black
-        root.config(bg="#26242f")
-        switch = False
+	global switch_value
+	if switch_value == True:
+		switch.config(image=dark, bg="#26242f",
+					activebackground="#26242f")
+		
+		# Changes the window to dark theme
+		root.config(bg="#26242f")
+		switch_value = False
 
-    # changing the background color to white
-    else:
-        switch.config(image=light, bg="white", activebackground="white")
-        switch = True
+	else:
+		switch.config(image=light, bg="white",
+					activebackground="white")
+		
+		# Changes the window to light theme
+		root.config(bg="white")
+		switch_value = True
 
-    # This is the switch button
-switch = Button(
-        root,
-        image=light,
-        bg="white",
-        activebackground="white",
-        bd=0,
-        cursor="hand2",
-        command=toggle)
-switch.place(x=500, y=50)
 
+# Creating a button to toggle
+# between light and dark themes
+switch = Button(root, image=light,
+				bd=0, bg="white",
+				activebackground="white",
+				command=toggle)
+switch.place(x=430, y=20)
 
 # defining my weather
 def getWeather():
@@ -181,7 +187,7 @@ clock.place(x=50, y=140)
 
 # Placing temperature and condition
 t = Label(font=("Poppins", 20, "bold"), fg="red")
-t.place(x=500, y=200)
+t.place(x=500, y=150)
 
 c = Label(font=("Poppins", 28, "bold"))
 c.place(x=500, y=220)
