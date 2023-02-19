@@ -17,16 +17,15 @@ from timezonefinder import *
 # initializing tkinter
 root = Tk()
 root.title("Weather Update")
-# root.config(bg="black")
 
 # This gives the size of the application
 root.geometry("720x480+300+200")
 root.resizable(False, False)
 
 # search bar
-search_bar = PhotoImage(file="search.png")
-search_image = Label(image=search_bar)
-search_image.place(x=20, y=15.8)
+# search_bar = PhotoImage(file="search.png")
+# search_image = Label(image=search_bar)
+# search_image.place(x=20, y=15.8)
 
 # text field
 textfield = Entry(
@@ -47,9 +46,6 @@ box_image.place(x=38, y=375)
 # Adding light and dark mode images
 light = PhotoImage(file="light.png")
 dark = PhotoImage(file="dark.png")
-# Adding light and dark mode images
-light = PhotoImage(file="light.png")
-dark = PhotoImage(file="dark.png")
 
 switch_value = True
 
@@ -57,31 +53,28 @@ switch_value = True
 # between light and dark theme
 def toggle():
 
-	global switch_value
-	if switch_value == True:
-		switch.config(image=dark, bg="#26242f",
-					activebackground="#26242f")
-		
-		# Changes the window to dark theme
-		root.config(bg="#26242f")
-		switch_value = False
+    global switch_value
+    if switch_value == True:
+        switch.config(image=dark, bg="#26242f", activebackground="#26242f")
 
-	else:
-		switch.config(image=light, bg="white",
-					activebackground="white")
-		
-		# Changes the window to light theme
-		root.config(bg="white")
-		switch_value = True
+        # Changes the window to dark theme
+        root.config(bg="#26242f")
+        switch_value = False
+
+    else:
+        switch.config(image=light, bg="white", activebackground="white")
+
+        # Changes the window to light theme
+        root.config(bg="white")
+        switch_value = True
 
 
 # Creating a button to toggle
 # between light and dark themes
-switch = Button(root, image=light,
-				bd=0, bg="white",
-				activebackground="white",
-				command=toggle)
-switch.place(x=430, y=20)
+switch = Button(
+    root, image=light, bd=0, bg="white", activebackground="white", command=toggle
+)
+switch.place(x=520, y=5)
 
 # defining my weather
 def getWeather():
@@ -135,7 +128,7 @@ search_icon_image = Button(
     borderwidth=0,
     height=50,
 )
-search_icon_image.place(x=310, y=30)
+search_icon_image.place(x=300, y=30)
 
 # app icon
 # root.iconbitmap("weather icon.png")
