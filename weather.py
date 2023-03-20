@@ -5,6 +5,7 @@ app version: 1.2
 """
 
 # importing required libraries
+import sys
 from tkinter import *
 from datetime import *
 from tkinter import messagebox
@@ -23,9 +24,41 @@ root.geometry("720x480+300+200")
 root.resizable(False, False)
 
 # search bar
-# search_bar = PhotoImage(file="search.png")
-# search_image = Label(image=search_bar)
-# search_image.place(x=20, y=15.8)
+search_bar = PhotoImage(file="search.png")
+search_image = Label(image=search_bar)
+search_image.place(x=20, y=15.8)
+
+import pygame
+import random
+
+# initialize pygame
+pygame.init()
+
+# set up the screen
+screen_width = 800
+screen_height = 600
+screen = pygame.display.set_mode((screen_width, screen_height))
+
+
+
+# main game loop
+while True:
+    # handle events
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+
+    # fill the screen with black
+    screen.fill((0, 0, 0))
+
+    # draw the raindrops
+    for x, y in raindrops:
+        pygame.draw.line(screen, (255, 255, 255), (x, y), (x, y+10), 2)
+
+    # update the display
+    pygame.display.update()
+
 
 # text field
 textfield = Entry(
