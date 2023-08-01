@@ -4,16 +4,13 @@ Application name: Weather update
 app version: 1.2
 """
 
-# importing required libraries
-import sys
 from tkinter import *
 from datetime import *
 from tkinter import messagebox
 import pytz
 import requests
-from geopy.geocoders import *
-from timezonefinder import *
-
+from geopy.geocoders import Nominatim
+from timezonefinder import TimezoneFinder
 
 # initializing tkinter
 root = Tk()
@@ -22,43 +19,6 @@ root.title("Weather Update")
 # This gives the size of the application
 root.geometry("720x480+300+200")
 root.resizable(False, False)
-
-# search bar
-search_bar = PhotoImage(file="search.png")
-search_image = Label(image=search_bar)
-search_image.place(x=20, y=15.8)
-
-import pygame
-import random
-
-# initialize pygame
-pygame.init()
-
-# set up the screen
-screen_width = 800
-screen_height = 600
-screen = pygame.display.set_mode((screen_width, screen_height))
-
-
-
-# main game loop
-while True:
-    # handle events
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
-
-    # fill the screen with black
-    screen.fill((0, 0, 0))
-
-    # draw the raindrops
-    for x, y in raindrops:
-        pygame.draw.line(screen, (255, 255, 255), (x, y), (x, y+10), 2)
-
-    # update the display
-    pygame.display.update()
-
 
 # text field
 textfield = Entry(
@@ -75,35 +35,25 @@ box = PhotoImage(file="box.png")
 box_image = Label(image=box)
 box_image.place(x=38, y=375)
 
-
 # Adding light and dark mode images
 light = PhotoImage(file="light.png")
 dark = PhotoImage(file="dark.png")
 
 switch_value = True
 
-# Defining a function to toggle
-# between light and dark theme
+# Defining a function to toggle between light and dark theme
 def toggle():
-
     global switch_value
     if switch_value == True:
         switch.config(image=dark, bg="#26242f", activebackground="#26242f")
-
-        # Changes the window to dark theme
         root.config(bg="#26242f")
         switch_value = False
-
     else:
         switch.config(image=light, bg="white", activebackground="white")
-
-        # Changes the window to light theme
         root.config(bg="white")
         switch_value = True
 
-
-# Creating a button to toggle
-# between light and dark themes
+# Creating a button to toggle between light and dark themes
 switch = Button(
     root, image=light, bd=0, bg="white", activebackground="white", command=toggle
 )
@@ -138,7 +88,7 @@ def getWeather():
         pressure = data["main"]["pressure"]
         wind = data["main"]["temp"]
 
-        t.config(text=(temp, "ºC"))
+        t.config(text=f"{temp} ºC")
         c.config(text=condition)
         w.config(text=wind)
         p.config(text=pressure)
@@ -146,9 +96,8 @@ def getWeather():
         d.config(text=description)
     except:
         messagebox.showerror(
-            "Error!", "cannot find location!\ncheck network connection or spelling."
+            "Error!", "Cannot find location!\nCheck network connection or spelling."
         )
-
 
 # search icon
 search_icon = PhotoImage(file="search_icon.png")
@@ -162,12 +111,6 @@ search_icon_image = Button(
     height=50,
 )
 search_icon_image.place(x=300, y=30)
-
-# app icon
-# root.iconbitmap("weather icon.png")
-app_icon = PhotoImage(file="weather icon.png")
-root.iconphoto(False, app_icon)
-
 
 # Logo in app, will be changed to a gif later in the upcoming versions
 logo = PhotoImage(file="logo.png")
@@ -219,5 +162,3 @@ c = Label(font=("Poppins", 28, "bold"))
 c.place(x=500, y=220)
 
 root.mainloop()
-
-SystemExit
