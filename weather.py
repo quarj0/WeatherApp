@@ -14,7 +14,7 @@ from timezonefinder import TimezoneFinder
 
 # initializing tkinter
 root = Tk()
-root.title("Weather Update")
+root.title("MiSmall Weather")
 
 # This gives the size of the application
 root.geometry("720x480+300+200")
