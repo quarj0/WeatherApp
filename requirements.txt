@@ -4,7 +4,7 @@ charset-normalizer==3.2.0
 geographiclib==2.0
 geopy==2.3.0
 h3==3.7.6
-idna==3.4
+idna==3.7
 numpy==1.25.2
 pycparser==2.21
 pygame==2.5.0
