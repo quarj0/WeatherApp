@@ -9,6 +9,6 @@ numpy==1.25.2
 pycparser==2.21
 pygame==2.5.0
 pytz==2023.3
-requests==2.32.0
+requests==2.32.4
 timezonefinder==6.2.0
 urllib3==2.2.2
